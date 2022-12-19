@@ -1,11 +1,11 @@
-import { ProductManager } from '../services/products.services.js'
+import productManager  from '../services/products.services.js'
 
-const productManager = new ProductManager('./src/store/products.json')
+// const productManager = new ProductManager('./src/store/products.json')
+
 
 export const getProducts = async (req, res) => {
   try {
     const { limit } = req.query
-    // const products = await req.productManager.getProducts()
     const products = await productManager.getProducts()
 
     if (!isNaN(limit)) {
