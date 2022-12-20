@@ -1,5 +1,8 @@
 import express from 'express'
 import { engine } from 'express-handlebars'
+import { Server } from 'socket.io'
+
+import { webSocketInit } from './utils/websocket.js'
 
 import routes from './routes/index.routes.js'
 
@@ -15,6 +18,13 @@ app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 app.set('views', 'src/views')
 
+// Implement socket on application middleware
+// https://stackoverflow.com/questions/47837685/use-socket-io-in-expressjs-routes-instead-of-in-main-server-js-file
+app.use((req, res, next) => {
+  req.io = io
+  next()
+})
+
 // HTTP Server routes
 app.use(routes)
 
@@ -25,3 +35,7 @@ const server = app.listen(PORT, () => {
 })
 
 server.on('error', (err) => console.log(err))
+
+const io = new Server(server)
+
+webSocketInit(io)

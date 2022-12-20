@@ -6,6 +6,7 @@ import cartsRoutes from './carts.routes.js'
 
 const router = Router()
 
+
 // Views
 router.use('/', viewsRouter)
 
