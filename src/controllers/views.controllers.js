@@ -1,4 +1,3 @@
-
 import productManager from '../services/products.services.js'
 
 export const getHome = async (req, res) => {
@@ -6,7 +5,7 @@ export const getHome = async (req, res) => {
 
     const productsList = await productManager.getProducts()
 
-    res.render('home', {
+    res.render('index', {
       products: productsList
     })
 

@@ -18,8 +18,8 @@ app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 app.set('views', 'src/views')
 
-// Implement socket on application middleware
-// https://stackoverflow.com/questions/47837685/use-socket-io-in-expressjs-routes-instead-of-in-main-server-js-file
+// Implement socket on application middleware to use Socket.io in HTTP request
+// See: https://stackoverflow.com/questions/47837685/use-socket-io-in-expressjs-routes-instead-of-in-main-server-js-file
 app.use((req, res, next) => {
   req.io = io
   next()
@@ -36,6 +36,7 @@ const server = app.listen(PORT, () => {
 
 server.on('error', (err) => console.log(err))
 
+// Create Socket.io server
 const io = new Server(server)
-
+// Init Socket.io event driver
 webSocketInit(io)

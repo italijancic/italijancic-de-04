@@ -1,9 +1,6 @@
 import cartManager from '../services/carts.services.js'
 import productManager from '../services/products.services.js'
 
-// const productManager = new ProductManager('./src/store/products.json')
-// const cartManager = new CartManager('./src/store/carts.json')
-
 export const postCart = async (req, res) => {
   try {
 

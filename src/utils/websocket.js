@@ -3,9 +3,13 @@ export const webSocketInit = (io) => {
 
   io.on('connection', (socket) => {
 
-    console.log(`[io.on(connection)]: ⚡️ new client connection ${socket.io}`)
+    console.log(`[io.on(connection)]: ⚡️ new client connection - socket.id = ${socket.id}`)
 
+    socket.on('disconnect', (reason) => {
+      console.log(`[io.on(disconnect)]: 🔌 client disconnect - reason: ${reason}`)
+    })
 
   })
+
 }
 
