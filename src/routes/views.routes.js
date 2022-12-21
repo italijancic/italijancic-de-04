@@ -6,7 +6,6 @@ const router = Router()
 
 router.get('/', views.getHome)
 
-
 router.get('/realtimeproducts', views.getRealTimeProducts)
 
 export default router
