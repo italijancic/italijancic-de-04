@@ -1,6 +1,5 @@
 const socket = io()
 
-
 socket.on('products', (data) => {
 
   renderList(data)
