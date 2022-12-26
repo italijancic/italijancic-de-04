@@ -19,7 +19,7 @@ export const getProducts = async (req, res) => {
     } else {
       res.status(200).json({
         success: true,
-        procuts: products
+        products: products
       })
     }
   } catch (error) {
